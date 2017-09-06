@@ -1,49 +1,47 @@
 angular.module('listings').controller('ListingsController', ['$scope', 'Listings',
 
-  function($scope, Listings) {
+function($scope, Listings) {
 
-    $scope.listings = Listings;
+  $scope.listings = Listings;
 
-    $scope.detailedInfo = undefined;
+  $scope.addListing = function() {
 
+    $scope.listings.push($scope.listing);
 
+    $scope.listing = "";
 
-    /*
+  };
 
-      Implement these functions in the controller to make your application function
+  $scope.remove = function(index) {
 
-      as described in the assignment spec.
+    $scope.listings.splice(index,1);
 
-     */
+  };
 
-    $scope.addListing = function() {
+  $scope.showDetails = function(id){
 
-      $scope.listings.push($scope.entries);
+    for(i in $scope.listings) {
 
-      $scope.listings = "";
-    };
+      if($scope.listings[i].name == id.name) {
 
-    $scope.deleteListing = function(index) {
+        $scope.listings[i].index = 1;
 
-      for (x in $scope.listings) {
-
-        if ($scope.listings[x].code == index.code) {
-          $scope.contactlist.splice(i, 1);
-
-        }
       }
-    };
 
-    $scope.showDetails = function(index) {
+      else {
 
-      for(x in $scope.listings) {
+        $scope.listings[i].index = 0;
 
-        if ($scope.listings[x].code = index.code) {
-
-
-        }
       }
-    };
-  }
 
-]);
+    }
+
+  };
+
+  $scope.deselect = function() {
+
+    $scope.listing = "";
+
+  };
+
+}]);

@@ -2540,10 +2540,10 @@ angular.module('listings').factory('Listings', function() {
 
         }]
 
-    };
+      };
 
 
 
-    return listings.entries;
+return listings.entries;
 
 });
